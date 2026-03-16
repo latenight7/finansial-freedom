@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Panduan financial freedom & pensiun dini Indonesia. Tutorial step-by-step + progress checklist untuk target pensiun usia 33, 46, dan 50.">
+<meta name="theme-color" content="#0C0A07">
+<meta property="og:title" content="Financial Freedom Guide — Panduan Pensiun Dini">
+<meta property="og:description" content="Tutorial + checklist interaktif menuju kebebasan finansial. Target pensiun 33, 46, atau 50 tahun.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+<title>Financial Freedom Guide — Panduan Pensiun Dini</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ====== RESET & BASE ====== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Sora', sans-serif;
+  background: #0C0A07;
+  color: #E8E0D0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ====== CSS VARIABLES ====== */
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-pale: rgba(201,168,76,0.12);
+  --gold-glow: rgba(201,168,76,0.25);
+  --ink: #0C0A07;
+  --surface: #141210;
+  --surface2: #1C1915;
+  --surface3: #242118;
+  --text: #E8E0D0;
+  --text-muted: #8A7E6A;
+  --text-dim: #5A5245;
+  --border: rgba(201,168,76,0.15);
+  --border-mid: rgba(201,168,76,0.3);
+  --danger: #E05C4A;
+  --danger-bg: rgba(224,92,74,0.12);
+  --warn: #D4A03A;
+  --warn-bg: rgba(212,160,58,0.12);
+  --success: #4BAA7A;
+  --success-bg: rgba(75,170,122,0.12);
+  --blue: #4A90D9;
+  --blue-bg: rgba(74,144,217,0.12);
+  --purple: #9B72CF;
+  --purple-bg: rgba(155,114,207,0.12);
+}
+
+/* ====== NOISE TEXTURE OVERLAY ====== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* ====== HEADER / HERO ====== */
+.hero {
+  position: relative;
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(201,168,76,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--border-mid);
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  animation: fadeUp .6s ease both;
+}
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: #F5EDD8;
+  margin-bottom: 1rem;
+  animation: fadeUp .7s .1s ease both;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+.hero-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 2rem;
+  font-weight: 300;
+  animation: fadeUp .7s .2s ease both;
+}
+.hero-cards {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: fadeUp .7s .3s ease both;
+}
+.hero-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 12px;
+  text-align: left;
+  min-width: 140px;
+}
+.hero-card-label { color: var(--text-dim); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 4px; }
+.hero-card-val { font-size: 1.1rem; font-weight: 600; color: var(--gold-light); font-family: 'Playfair Display', serif; }
+.hero-card-note { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ====== PROGRESS GLOBAL ====== */
+.progress-global {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.progress-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.progress-label { font-size: 11px; color: var(--text-muted); white-space: nowrap; font-weight: 500; }
+.progress-track {
+  flex: 1;
+  height: 4px;
+  background: var(--surface3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+  border-radius: 2px;
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+  width: 0%;
+}
+.progress-pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--gold);
+  min-width: 52px;
+  text-align: right;
+}
+.progress-count { font-size: 11px; color: var(--text-dim); white-space: nowrap; }
+
+/* ====== MAIN LAYOUT ====== */
+.main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+
+/* ====== TARGET SELECTOR ====== */
+.target-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 2.5rem;
+}
+.target-btn {
+  position: relative;
+  padding: 1.25rem 1rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all .2s;
+  overflow: hidden;
+}
+.target-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-pale) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .2s;
+}
+.target-btn:hover::before, .target-btn.active::before { opacity: 1; }
+.target-btn.active {
+  border-color: var(--gold);
+  background: var(--surface3);
+}
+.target-btn-age {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.target-btn-label { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+.target-btn-invest { font-size: 13px; font-weight: 600; color: var(--text); }
+.target-btn-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-top: 6px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.badge-agresif { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(224,92,74,.25); }
+.badge-realistis { background: var(--success-bg); color: var(--success); border: 1px solid rgba(75,170,122,.25); }
+.badge-moderat { background: var(--blue-bg); color: var(--blue); border: 1px solid rgba(74,144,217,.25); }
+.target-active-dot {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: none;
+}
+.target-btn.active .target-active-dot { display: block; }
+
+/* ====== PANELS ====== */
+.panel { display: none; }
+.panel.active { display: block; animation: fadeIn .3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ====== ALERT ====== */
+.alert {
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  border: 1px solid;
+}
+.alert-danger { background: var(--danger-bg); border-color: rgba(224,92,74,.3); color: #F0A090; }
+.alert-success { background: var(--success-bg); border-color: rgba(75,170,122,.3); color: #7DCAA4; }
+
+/* ====== STATS GRID ====== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+@media(max-width:600px){ .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+.stat-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.stat-box-label { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 5px; }
+.stat-box-val { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--gold-light); line-height: 1.2; }
+.stat-box-note { font-size: 10px; color: var(--text-muted); margin-top: 3px; }
+
+/* ====== SECTION ====== */
+.section { margin-bottom: 2.5rem; }
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+  padding-bottom: .875rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  color: var(--ink);
+  flex-shrink: 0;
+  box-shadow: 0 0 16px var(--gold-glow);
+}
+.section-text {}
+.section-title { font-size: 15px; font-weight: 600; color: var(--text); }
+.section-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.section-progress {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+/* ====== INFO BAR ====== */
+.info-bar {
+  border-left: 3px solid var(--gold);
+  padding: 10px 14px;
+  background: var(--gold-pale);
+  border-radius: 0 8px 8px 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+.info-bar strong { color: var(--gold-light); }
+
+/* ====== CHECKLIST ====== */
+.checklist { display: flex; flex-direction: column; gap: 8px; }
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .18s;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+.check-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--gold);
+  opacity: 0;
+  transition: opacity .2s;
+}
+.check-item:hover { border-color: var(--border-mid); background: var(--surface3); }
+.check-item:hover::before { opacity: .5; }
+.check-item.done { background: rgba(75,170,122,0.08); border-color: rgba(75,170,122,.25); }
+.check-item.done::before { background: var(--success); opacity: 1; }
+.check-item.done .check-text { color: var(--text-dim); text-decoration: line-through; }
+.check-item.done .check-sub { opacity: .5; }
+
+.check-box {
+  width: 20px; height: 20px;
+  border: 1.5px solid var(--text-dim);
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  transition: all .15s;
+}
+.check-item.done .check-box {
+  background: var(--success);
+  border-color: var(--success);
+}
+.check-tick { display: none; }
+.check-item.done .check-tick { display: block; }
+
+.check-content { flex: 1; }
+.check-text { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.check-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; line-height: 1.55; }
+.check-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; }
+.tag {
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 8px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.tag-kritis { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(224,92,74,.2); }
+.tag-penting { background: var(--warn-bg); color: var(--warn); border: 1px solid rgba(212,160,58,.2); }
+.tag-investasi { background: var(--blue-bg); color: var(--blue); border: 1px solid rgba(74,144,217,.2); }
+.tag-aset { background: var(--purple-bg); color: var(--purple); border: 1px solid rgba(155,114,207,.2); }
+.tag-checkpoint { background: rgba(201,168,76,.15); color: var(--gold); border: 1px solid rgba(201,168,76,.25); }
+.tag-finish { background: linear-gradient(135deg, rgba(201,168,76,.25), rgba(232,201,106,.15)); color: var(--gold-light); border: 1px solid var(--border-mid); }
+
+/* ====== MILESTONE TIMELINE ====== */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold), var(--border));
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+.timeline-dot {
+  position: absolute;
+  left: -2rem;
+  top: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 2px solid var(--gold);
+  z-index: 1;
+  transition: all .2s;
+}
+.check-item.done ~ .timeline-dot,
+.timeline-item.done .timeline-dot {
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold-glow);
+}
+.timeline-check {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all .18s;
+  user-select: none;
+}
+.timeline-check:hover { border-color: var(--border-mid); background: var(--surface3); }
+.timeline-check.done { border-color: rgba(75,170,122,.25); background: rgba(75,170,122,0.08); }
+.timeline-check.done .tl-text { color: var(--text-dim); text-decoration: line-through; }
+.tl-year { font-size: 10px; color: var(--gold); font-weight: 600; letter-spacing: .08em; margin-bottom: 3px; }
+.tl-text { font-size: 13px; font-weight: 500; color: var(--text); }
+.tl-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; line-height: 1.5; }
+
+/* ====== COMPARISON TABLE ====== */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-size: 12px;
+}
+.compare-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+}
+.compare-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(201,168,76,.07);
+  color: var(--text-muted);
+  vertical-align: top;
+}
+.compare-table tr:hover td { background: var(--surface2); }
+.compare-table .row-label { color: var(--text); font-weight: 500; }
+.compare-table .col-33 { color: var(--danger); }
+.compare-table .col-46 { color: var(--success); }
+.compare-table .col-50 { color: var(--blue); }
+.compare-table .highlight { font-weight: 600; }
+
+/* ====== FOOTER ACTIONS ====== */
+.footer-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .18s;
+  text-decoration: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--ink);
+  border: none;
+  font-weight: 700;
+}
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-mid);
+  color: var(--text-muted);
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.btn-danger {
+  background: transparent;
+  border: 1px solid rgba(224,92,74,.3);
+  color: var(--danger);
+}
+.btn-danger:hover { background: var(--danger-bg); }
+
+/* ====== SECTION DIVIDER ====== */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 2.5rem 0;
+}
+.divider-line { flex: 1; height: 1px; background: var(--border); }
+.divider-text { font-size: 10px; color: var(--text-dim); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+
+/* ====== COMPARISON SECTION ====== */
+.compare-section { margin-top: 3rem; }
+.compare-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #F5EDD8;
+  margin-bottom: 1.5rem;
+}
+
+/* ====== SCROLL ANIMATIONS ====== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ====== TOAST ====== */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--surface2);
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--gold-light);
+  z-index: 999;
+  transform: translateY(60px);
+  opacity: 0;
+  transition: all .3s cubic-bezier(.34,1.56,.64,1);
+  pointer-events: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,.5);
+}
+.toast.show { transform: none; opacity: 1; }
+
+/* ====== RESPONSIVE ====== */
+@media(max-width:640px){
+  .hero { padding: 3rem 1.25rem 2.5rem; }
+  .main { padding: 1.25rem; }
+  .target-selector { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .hero-cards { flex-direction: column; align-items: center; }
+  .footer-actions { flex-direction: column; }
+  .progress-count { display: none; }
+}
+
+/* ====== SCROLLBAR ====== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Panduan Financial Freedom Indonesia</div>
+  <h1>Jalan menuju<br><em>kebebasan finansial</em></h1>
+  <p class="hero-sub">
+    Tutorial step-by-step dan progress checklist berdasarkan standar perencanaan pensiun dini. Pilih target usiamu, ikuti langkah-langkahnya.
+  </p>
+  <div class="hero-cards">
+    <div class="hero-card">
+      <div class="hero-card-label">Kebutuhan hidup</div>
+      <div class="hero-card-val">Rp4 jt/bulan</div>
+      <div class="hero-card-note">Standar negara maju</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Return investasi</div>
+      <div class="hero-card-val">8%/tahun</div>
+      <div class="hero-card-note">Asumsi konservatif</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Inflasi</div>
+      <div class="hero-card-val">4%/tahun</div>
+      <div class="hero-card-note">Target Bank Indonesia</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">Gaji bersih</div>
+      <div class="hero-card-val">Rp9,6 jt</div>
+      <div class="hero-card-note">Baseline perhitungan</div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY PROGRESS -->
+<div class="progress-global">
+  <div class="progress-inner">
+    <span class="progress-label">Progress</span>
+    <div class="progress-track"><div class="progress-fill" id="gbar"></div></div>
+    <span class="progress-pct" id="gpct">0%</span>
+    <span class="progress-count" id="gcnt">0/0 langkah</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- TARGET SELECTOR -->
+  <div class="target-selector" style="margin-top:2rem;">
+    <button class="target-btn active" onclick="switchPanel('p33',this)" id="btn33">
+      <div class="target-active-dot"></div>
+      <div class="target-btn-age">33</div>
+      <div class="target-btn-label">tahun · target pensiun</div>
+      <div class="target-btn-invest">Rp10,4 jt/bulan</div>
+      <span class="target-btn-badge badge-agresif">Agresif</span>
+    </button>
+    <button class="target-btn" onclick="switchPanel('p46',this)" id="btn46">
+      <div class="target-active-dot"></div>
+      <div class="target-btn-age">46</div>
+      <div class="target-btn-label">tahun · target pensiun</div>
+      <div class="target-btn-invest">Rp2,4 jt/bulan</div>
+      <span class="target-btn-badge badge-realistis">Realistis</span>
+    </button>
+    <button class="target-btn" onclick="switchPanel('p50',this)" id="btn50">
+      <div class="target-active-dot"></div>
+      <div class="target-btn-age">50</div>
+      <div class="target-btn-label">tahun · target pensiun</div>
+      <div class="target-btn-invest">Rp1,4 jt/bulan</div>
+      <span class="target-btn-badge badge-moderat">Moderat</span>
+    </button>
+  </div>
+
+  <!-- ========== PANEL 33 ========== -->
+  <div class="panel active" id="p33">
+
+    <div class="alert alert-danger reveal">
+      ⚠ <strong>Target sangat agresif.</strong> Investasi Rp10,4 jt/bulan melebihi gaji bersih Rp9,6 jt. Wajib membangun income tambahan dari bisnis atau side hustle sebelum target ini realistis.
+    </div>
+
+    <div class="stats-grid reveal">
+      <div class="stat-box">
+        <div class="stat-box-label">Waktu investasi</div>
+        <div class="stat-box-val">7 tahun</div>
+        <div class="stat-box-note">Sangat sempit</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Dana pensiun target</div>
+        <div class="stat-box-val">Rp1,17 M</div>
+        <div class="stat-box-note">Total portofolio</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">FV kebutuhan/bulan</div>
+        <div class="stat-box-val">Rp5,58 jt</div>
+        <div class="stat-box-note">Setelah inflasi 7 th</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Investasi wajib/bulan</div>
+        <div class="stat-box-val">Rp10,4 jt</div>
+        <div class="stat-box-note">108% gaji saat ini 🔴</div>
+      </div>
+    </div>
+
+    <!-- SEKSI 1 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">1</div>
+        <div class="section-text">
+          <div class="section-title">Bersihkan fondasi keuangan</div>
+          <div class="section-sub">Wajib diselesaikan sebelum investasi sepeser pun</div>
+        </div>
+        <span class="section-progress" id="p33s1-prog">0/4</span>
+      </div>
+      <div class="checklist" id="p33s1">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Audit kondisi keuangan lengkap</div>
+            <div class="check-sub">Catat semua pemasukan, pengeluaran, hutang, dan aset dalam satu spreadsheet. Tanpa ini, semua perencanaan hanya tebak-tebakan.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Lunasi semua hutang konsumtif</div>
+            <div class="check-sub">Kartu kredit, pinjol, cicilan elektronik. Gunakan metode avalanche (bunga tertinggi dulu). KPR boleh lanjut jika aset produktif.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Dana darurat 12 bulan (Rp48 jt+)</div>
+            <div class="check-sub">Pensiun dini butuh buffer lebih besar dari standar 3–6 bulan. Simpan di reksa dana pasar uang atau deposito terpisah. Jangan disentuh kecuali darurat nyata.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">BPJS Kesehatan aktif + asuransi jiwa</div>
+            <div class="check-sub">Satu kejadian medis tanpa proteksi bisa menghancurkan semua tabungan. Asuransi jiwa penting jika ada tanggungan atau cicilan besar.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKSI 2 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">2</div>
+        <div class="section-text">
+          <div class="section-title">Bangun mesin income tambahan</div>
+          <div class="section-sub">Wajib untuk pensiun 33 — gaji saja tidak mencukupi</div>
+        </div>
+        <span class="section-progress" id="p33s2-prog">0/4</span>
+      </div>
+      <div class="info-bar">
+        Butuh total investasi <strong>Rp10,4 jt/bulan</strong>. Dari gaji Rp9,6 jt hanya bisa dialokasikan ~Rp2–3 jt. Kekurangan Rp7–8 jt harus ditutup dari <strong>income tambahan atau bisnis</strong>.
+      </div>
+      <div class="checklist" id="p33s2">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Identifikasi skill yang bisa dimonetisasi sekarang</div>
+            <div class="check-sub">Desain, coding, menulis, mengajar, konsultasi, penerjemahan. Pilih yang sudah punya basis keahlian — jangan mulai dari nol.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Mulai side income pertama (target Rp3–5 jt/bulan)</div>
+            <div class="check-sub">Platform: Fiverr, Upwork, Sribulancer untuk freelance. Tokopedia/Shopee untuk produk fisik. Udemy/Skillshare untuk kursus digital.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Scale income tambahan ke Rp10–15 jt/bulan</div>
+            <div class="check-sub">Dari satu klien ke banyak klien, atau dari freelance ke produk/bisnis yang bisa berjalan semi-pasif. Reinvest 100% profit ke portofolio investasi.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Minimal 2 sumber income yang berbeda</div>
+            <div class="check-sub">Jangan bergantung pada 1 klien atau 1 platform. Diversifikasi income adalah syarat mutlak untuk pensiun dini yang aman.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKSI 3 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">3</div>
+        <div class="section-text">
+          <div class="section-title">Strategi investasi agresif</div>
+          <div class="section-sub">Target portofolio Rp1,17 M dalam 7 tahun</div>
+        </div>
+        <span class="section-progress" id="p33s3-prog">0/4</span>
+      </div>
+      <div class="checklist" id="p33s3">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Buka akun reksa dana dan rekening saham</div>
+            <div class="check-sub">Bibit atau Bareksa untuk reksa dana otomatis. Broker saham: Mirae Asset, BNI Sekuritas, Stockbit. Lengkapi KYC dan verifikasi identitas.</div>
+            <div class="check-tags"><span class="tag tag-investasi">Investasi</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Alokasi portofolio 70–80% saham/ETF growth</div>
+            <div class="check-sub">Reksa dana saham, ETF IHSG, saham blue chip LQ45. Sisa 20–30% untuk obligasi atau pasar uang sebagai buffer volatilitas.</div>
+            <div class="check-tags"><span class="tag tag-investasi">Investasi</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Setup auto-invest setiap tanggal gajian</div>
+            <div class="check-sub">"Pay yourself first" — otomasi agar uang investasi keluar sebelum sempat dipakai konsumsi. Ini perbedaan antara yang berhasil dan yang tidak.</div>
+            <div class="check-tags"><span class="tag tag-investasi">Investasi</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Review dan rebalance portofolio setiap 6 bulan</div>
+            <div class="check-sub">Rebalance jika deviasi >10% dari target alokasi. Disiplin adalah kunci — jangan panik saat pasar turun, dan jangan serakah saat pasar naik.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKSI 4 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">4</div>
+        <div class="section-text">
+          <div class="section-title">Aset produktif & income pasif</div>
+          <div class="section-sub">Harus sudah berjalan sebelum pensiun usia 33</div>
+        </div>
+        <span class="section-progress" id="p33s4-prog">0/3</span>
+      </div>
+      <div class="checklist" id="p33s4">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Bangun aset digital yang menghasilkan pasif</div>
+            <div class="check-sub">Blog, YouTube, kursus online, produk digital, template, royalti konten. Butuh 2–3 tahun untuk matang jadi income signifikan.</div>
+            <div class="check-tags"><span class="tag tag-aset">Aset</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Rencanakan properti untuk disewakan</div>
+            <div class="check-sub">Kos, kontrakan, atau properti komersial kecil. Properti sewa yang bukan tempat tinggal = income pasif stabil saat pensiun.</div>
+            <div class="check-tags"><span class="tag tag-aset">Aset</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Verifikasi income pasif ≥ Rp4 jt/bulan sebelum resign</div>
+            <div class="check-sub">Sebelum benar-benar pensiun, pastikan semua stream income pasif sudah cover biaya hidup tanpa menyentuh pokok investasi.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end panel 33 -->
+
+
+  <!-- ========== PANEL 46 ========== -->
+  <div class="panel" id="p46">
+
+    <div class="alert alert-success reveal">
+      ✅ <strong>Target paling realistis dan terukur.</strong> Investasi Rp2,4 jt/bulan = 25% gaji. Compounding 20 tahun bekerja di level optimal. Ini sweet spot dari data perencanaan kamu.
+    </div>
+
+    <div class="stats-grid reveal">
+      <div class="stat-box">
+        <div class="stat-box-label">Waktu investasi</div>
+        <div class="stat-box-val">20 tahun</div>
+        <div class="stat-box-note">Compounding optimal</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Dana pensiun target</div>
+        <div class="stat-box-val">Rp1,47 M</div>
+        <div class="stat-box-note">Total portofolio</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">FV kebutuhan/bulan</div>
+        <div class="stat-box-val">Rp8,76 jt</div>
+        <div class="stat-box-note">Setelah inflasi 20 th</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Investasi wajib/bulan</div>
+        <div class="stat-box-val">Rp2,4 jt</div>
+        <div class="stat-box-note">25% dari gaji ✅</div>
+      </div>
+    </div>
+
+    <!-- SEKSI 1 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">1</div>
+        <div class="section-text">
+          <div class="section-title">Bersihkan fondasi keuangan</div>
+          <div class="section-sub">Stepping ladder langkah 1–3 — fondasi sebelum investasi</div>
+        </div>
+        <span class="section-progress" id="p46s1-prog">0/4</span>
+      </div>
+      <div class="checklist" id="p46s1">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Kumpulkan Rp10 jt sebagai tabungan awal</div>
+            <div class="check-sub">Modal psikologis yang penting. Dana ini jadi buffer dan memberi kepercayaan diri untuk memulai perjalanan panjang 20 tahun.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Lunasi semua hutang konsumtif (metode avalanche)</div>
+            <div class="check-sub">Urutan: kartu kredit (bunga 30–40%/th) → pinjol → cicilan elektronik. Bunga hutang selalu lebih tinggi dari return investasi manapun.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Dana darurat Rp38,4 jt (3 bulan gaji + Rp10 jt buffer)</div>
+            <div class="check-sub">Rekening TERPISAH. Reksa dana pasar uang memberikan return 4–5%/th jauh lebih baik dari tabungan biasa. Jangan pernah dicampur dengan dana investasi.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">BPJS Kesehatan aktif + asuransi jiwa</div>
+            <div class="check-sub">Proteksi dulu, investasi kemudian. Jika punya tanggungan keluarga atau cicilan KPR, asuransi jiwa adalah kewajiban, bukan opsi.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKSI 2 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">2</div>
+        <div class="section-text">
+          <div class="section-title">Setup mesin investasi bulanan</div>
+          <div class="section-sub">Rp2,4 jt/bulan konsisten selama 20 tahun</div>
+        </div>
+        <span class="section-progress" id="p46s2-prog">0/4</span>
+      </div>
+      <div class="checklist" id="p46s2">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Buka akun reksa dana dan broker saham</div>
+            <div class="check-sub">Bibit untuk reksa dana berbasis robo-advisor. BNI Sekuritas, Mirae Asset, atau Stockbit untuk saham. Pilih yang biaya transaksi paling minimal.</div>
+            <div class="check-tags"><span class="tag tag-investasi">Investasi</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Alokasi: 60% saham, 30% obligasi, 10% pasar uang</div>
+            <div class="check-sub">Glide path: setiap 5 tahun kurangi porsi saham ~10% dan pindahkan ke obligasi/pasar uang. Semakin dekat pensiun, semakin konservatif portofolio.</div>
+            <div class="check-tags"><span class="tag tag-investasi">Investasi</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Setup auto-invest Rp2,4 jt di tanggal gajian</div>
+            <div class="check-sub">"Pay yourself first" — investasi keluar otomatis sebelum uang sempat dialokasikan ke hal lain. Tanpa otomasi, konsistensi 20 tahun hampir mustahil.</div>
+            <div class="check-tags"><span class="tag tag-investasi">Investasi</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Naikkan investasi setiap kali gaji naik</div>
+            <div class="check-sub">Lifestyle inflation adalah musuh nomor satu rencana pensiun. Aturan: setiap naik gaji Rp500 rb, tambah investasi minimal Rp300–400 rb. Nikmati sisanya.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKSI 3 — MILESTONE TIMELINE -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">3</div>
+        <div class="section-text">
+          <div class="section-title">Milestone 5 tahunan</div>
+          <div class="section-sub">Checkpoint perjalanan 20 tahun menuju pensiun 46</div>
+        </div>
+        <span class="section-progress" id="p46s3-prog">0/4</span>
+      </div>
+      <div class="timeline" id="p46s3">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-check" onclick="togTL(this)">
+            <div class="tl-year">☐ Tahun ke-5</div>
+            <div class="tl-text">Portofolio mencapai Rp170–200 jt</div>
+            <div class="tl-sub">Compounding mulai terasa nyata. Tetap investasi meskipun ada kebutuhan besar — jangan ambil dari portofolio kecuali benar-benar tidak ada jalan lain.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-check" onclick="togTL(this)">
+            <div class="tl-year">☐ Tahun ke-10</div>
+            <div class="tl-text">Portofolio mencapai Rp430–480 jt</div>
+            <div class="tl-sub">Rencanakan pelunasan KPR. Pisahkan dana pendidikan anak ke instrumen terpisah jika belum dilakukan. Review ulang target alokasi investasi.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-check" onclick="togTL(this)">
+            <div class="tl-year">☐ Tahun ke-15</div>
+            <div class="tl-text">Portofolio mencapai Rp830 jt – Rp1 M</div>
+            <div class="tl-sub">Mulai shift ke portofolio lebih konservatif secara bertahap. Kurangi saham growth, tambah obligasi dan saham dividen stabil.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-check" onclick="togTL(this)">
+            <div class="tl-year">☐ Tahun ke-20 · FINISH LINE 🎉</div>
+            <div class="tl-text">Portofolio ≥ Rp1,47 M — PENSIUN!</div>
+            <div class="tl-sub">Verifikasi SWR 4%: 4% × Rp1,47 M = Rp58,8 jt/tahun = Rp4,9 jt/bulan. Ini batas aman penarikan agar dana tidak habis dalam 30+ tahun.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKSI 4 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">4</div>
+        <div class="section-text">
+          <div class="section-title">Persiapan pasca-pensiun</div>
+          <div class="section-sub">Selesaikan menjelang usia 44–46</div>
+        </div>
+        <span class="section-progress" id="p46s4-prog">0/4</span>
+      </div>
+      <div class="checklist" id="p46s4">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">KPR lunas sebelum pensiun (target usia 44–46)</div>
+            <div class="check-sub">Rumah bebas cicilan = pengeluaran bulanan turun signifikan. Akselerasi cicilan secara berkala sangat dianjurkan.</div>
+            <div class="check-tags"><span class="tag tag-aset">Aset</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Dana pendidikan anak sudah tersedia dan terpisah</div>
+            <div class="check-sub">Gunakan reksa dana pendidikan atau tabungan pendidikan khusus. Jangan pernah campur dengan dana pensiun — ini kesalahan paling umum.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Punya income pasif di luar portofolio saham</div>
+            <div class="check-sub">Properti sewa, dividen saham, atau bisnis kecil yang semi-otomatis. Diversifikasi income pasif mengurangi ketergantungan pada satu sumber.</div>
+            <div class="check-tags"><span class="tag tag-aset">Aset</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Punya rencana konkret untuk kehidupan pasca-pensiun</div>
+            <div class="check-sub">Financial freedom tanpa tujuan hidup bisa berakhir membosankan atau depresi. Apa yang akan kamu kerjakan, pelajari, dan kontribusikan setelah pensiun?</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end panel 46 -->
+
+
+  <!-- ========== PANEL 50 ========== -->
+  <div class="panel" id="p50">
+
+    <div class="alert alert-success reveal">
+      ✅ <strong>Target paling moderat dan berkelanjutan.</strong> Hanya Rp1,4 jt/bulan (~15% gaji). Dana yang dibutuhkan lebih rendah dari pensiun 46 karena masa pensiun lebih pendek (10 vs 14 tahun).
+    </div>
+
+    <div class="stats-grid reveal">
+      <div class="stat-box">
+        <div class="stat-box-label">Waktu investasi</div>
+        <div class="stat-box-val">24 tahun</div>
+        <div class="stat-box-note">Compounding sangat optimal</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Dana pensiun target</div>
+        <div class="stat-box-val">Rp1,23 M</div>
+        <div class="stat-box-note">Total portofolio</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">FV kebutuhan/bulan</div>
+        <div class="stat-box-val">Rp10,24 jt</div>
+        <div class="stat-box-note">Setelah inflasi 24 th</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Investasi wajib/bulan</div>
+        <div class="stat-box-val">Rp1,4 jt</div>
+        <div class="stat-box-note">14,6% dari gaji ✅</div>
+      </div>
+    </div>
+
+    <!-- SEKSI 1 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">1</div>
+        <div class="section-text">
+          <div class="section-title">Fondasi & perlindungan keuangan</div>
+          <div class="section-sub">Sama seperti pensiun 46 — tapi ada waktu lebih banyak</div>
+        </div>
+        <span class="section-progress" id="p50s1-prog">0/3</span>
+      </div>
+      <div class="checklist" id="p50s1">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Tabungan Rp10 jt + lunasi semua hutang konsumtif</div>
+            <div class="check-sub">Langkah pertama selalu sama. Bersihkan semua kewajiban konsumtif sebelum mulai investasi serius — bunga hutang selalu mengalahkan return investasi.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Dana darurat 3 bulan gaji (Rp38,4 jt)</div>
+            <div class="check-sub">Untuk target 50 tahun, 3 bulan sudah memadai karena waktu kerja masih panjang. Reksa dana pasar uang return 4–5%/th jauh lebih baik dari tabungan.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">BPJS aktif + asuransi jiwa jangka panjang</div>
+            <div class="check-sub">Dengan waktu 24 tahun ke depan, risiko kesehatan lebih tinggi. Asuransi jiwa term life sampai usia 55–60 sangat direkomendasikan jika punya tanggungan.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKSI 2 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">2</div>
+        <div class="section-text">
+          <div class="section-title">Investasi konsisten & bertumbuh</div>
+          <div class="section-sub">Mulai Rp1,4 jt/bulan, naikkan secara bertahap</div>
+        </div>
+        <span class="section-progress" id="p50s2-prog">0/4</span>
+      </div>
+      <div class="checklist" id="p50s2">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Mulai investasi Rp1,4 jt/bulan secara rutin</div>
+            <div class="check-sub">Reksa dana saham campuran atau ETF. Robo-advisor seperti Bibit sangat membantu untuk pemula — set target dan biarkan berjalan otomatis.</div>
+            <div class="check-tags"><span class="tag tag-investasi">Investasi</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Naikan investasi Rp200–300 rb setiap kenaikan gaji</div>
+            <div class="check-sub">Strategi ini bisa mempercepat target pensiun ke usia 47–48. Konsistensi kecil yang bertumbuh jauh lebih powerful dari investasi besar yang tidak konsisten.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Di usia 45+, geser portofolio ke lebih konservatif</div>
+            <div class="check-sub">5 tahun sebelum pensiun: kurangi saham ke 40%, perbanyak obligasi dan instrumen stabil. Jangan biarkan volatilitas pasar menghancurkan tabungan di detik-detik akhir.</div>
+            <div class="check-tags"><span class="tag tag-investasi">Investasi</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Review portofolio tahunan — cukup satu kali setahun</div>
+            <div class="check-sub">Tracking harian itu kontraproduktif dan memicu keputusan emosional. Jadwalkan review tahunan: evaluasi alokasi, rebalance jika perlu, naikkan setoran jika mampu.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKSI 3 -->
+    <div class="section reveal">
+      <div class="section-head">
+        <div class="section-num">3</div>
+        <div class="section-text">
+          <div class="section-title">Aset & tanggungan keluarga</div>
+          <div class="section-sub">Selesaikan dalam perjalanan 24 tahun menuju pensiun 50</div>
+        </div>
+        <span class="section-progress" id="p50s3-prog">0/4</span>
+      </div>
+      <div class="checklist" id="p50s3">
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Dana pendidikan anak selesai sebelum usia 45</div>
+            <div class="check-sub">Rekening khusus pendidikan. Jangan campur dengan dana pensiun — ini adalah kesalahan yang paling sering merusak rencana keuangan jangka panjang.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">KPR lunas di usia 48–50</div>
+            <div class="check-sub">Akselerasi cicilan setiap ada rezeki lebih. Bayar 2–3x cicilan normal tanpa penalti di sebagian besar bank. Bebas cicilan = ketenangan nyata saat pensiun.</div>
+            <div class="check-tags"><span class="tag tag-aset">Aset</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Asuransi kesehatan swasta sebelum pensiun</div>
+            <div class="check-sub">Di usia 50+, biaya kesehatan naik sangat signifikan. Asuransi swasta sebagai pelengkap BPJS harus sudah aktif minimal 5 tahun sebelum pensiun.</div>
+            <div class="check-tags"><span class="tag tag-penting">Penting</span></div>
+          </div>
+        </div>
+        <div class="check-item" onclick="tog(this)">
+          <div class="check-box"><svg class="check-tick" width="11" height="9" viewBox="0 0 11 9"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+          <div class="check-content">
+            <div class="check-text">Verifikasi SWR: 4% × Rp1,23 M = Rp4,9 jt/bulan</div>
+            <div class="check-sub">Safe Withdrawal Rate 4% memastikan portofolio tidak habis selama 10+ tahun pensiun. Cukup cover biaya hidup Rp4 jt saat ini, disesuaikan inflasi.</div>
+            <div class="check-tags"><span class="tag tag-kritis">Kritis</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end panel 50 -->
+
+
+  <!-- COMPARISON TABLE -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-text">Perbandingan tiga skenario</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="compare-section reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th class="col-33">Pensiun 33</th>
+          <th class="col-46">Pensiun 46</th>
+          <th class="col-50">Pensiun 50</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="row-label">Waktu investasi</td><td class="col-33">7 tahun</td><td class="col-46">20 tahun</td><td class="col-50">24 tahun</td></tr>
+        <tr><td class="row-label">Masa pensiun</td><td class="col-33">27 tahun</td><td class="col-46">14 tahun</td><td class="col-50">10 tahun</td></tr>
+        <tr><td class="row-label">FV kebutuhan/bulan</td><td class="col-33">Rp5,58 jt</td><td class="col-46">Rp8,76 jt</td><td class="col-50">Rp10,24 jt</td></tr>
+        <tr><td class="row-label">Kebutuhan/tahun</td><td class="col-33">Rp66,9 jt</td><td class="col-46">Rp105,2 jt</td><td class="col-50">Rp122,9 jt</td></tr>
+        <tr><td class="row-label">Dana pensiun target</td><td class="col-33 highlight">Rp1,17 M</td><td class="col-46 highlight">Rp1,47 M</td><td class="col-50 highlight">Rp1,23 M</td></tr>
+        <tr><td class="row-label">Invest/bulan</td><td class="col-33 highlight">Rp10,4 jt 🔴</td><td class="col-46 highlight">Rp2,4 jt ✅</td><td class="col-50 highlight">Rp1,4 jt ✅</td></tr>
+        <tr><td class="row-label">% dari gaji</td><td class="col-33">108%</td><td class="col-46">25%</td><td class="col-50">14,6%</td></tr>
+        <tr><td class="row-label">Kesulitan</td><td class="col-33">Sangat tinggi</td><td class="col-46">Sedang</td><td class="col-50">Rendah</td></tr>
+        <tr><td class="row-label">Rekomendasi</td><td class="col-33">Butuh side income besar</td><td class="col-46">Sweet spot terbaik</td><td class="col-50">Bisa dipercepat</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER ACTIONS -->
+  <div class="footer-actions">
+    <button class="btn btn-ghost" onclick="printPage()">🖨 Cetak / Simpan PDF</button>
+    <button class="btn btn-danger" onclick="resetAll()">↺ Reset semua checklist</button>
+  </div>
+
+</div><!-- end main -->
+
+<script>
+// ===== STATE =====
+var state = {};
+
+function tog(el) {
+  el.classList.toggle('done');
+  saveAndUpdate();
+  if (el.classList.contains('done')) showToast('✓ Langkah selesai!');
+}
+
+function togTL(el) {
+  el.classList.toggle('done');
+  var dot = el.closest('.timeline-item').querySelector('.timeline-dot');
+  if (el.classList.contains('done')) {
+    dot.style.background = 'var(--gold)';
+    dot.style.boxShadow = '0 0 10px var(--gold-glow)';
+    el.querySelector('.tl-year').textContent = el.querySelector('.tl-year').textContent.replace('☐','✓');
+    showToast('✓ Milestone tercapai!');
+  } else {
+    dot.style.background = '';
+    dot.style.boxShadow = '';
+    var yr = el.querySelector('.tl-year').textContent.replace('✓','☐');
+    el.querySelector('.tl-year').textContent = yr;
+  }
+  saveAndUpdate();
+}
+
+// ===== PROGRESS =====
+function updateProgress() {
+  var panel = document.querySelector('.panel.active');
+  if (!panel) return;
+  var items = panel.querySelectorAll('.check-item, .timeline-check');
+  var done = panel.querySelectorAll('.check-item.done, .timeline-check.done');
+  var total = items.length, finished = done.length;
+  var pct = total ? Math.round(finished/total*100) : 0;
+
+  document.getElementById('gbar').style.width = pct+'%';
+  document.getElementById('gpct').textContent = pct+'%';
+  document.getElementById('gcnt').textContent = finished+'/'+total+' langkah';
+
+  // Update section progress counts
+  var sections = panel.querySelectorAll('[id$="-prog"]');
+  sections.forEach(function(el) {
+    var secId = el.id.replace('-prog','');
+    var sec = document.getElementById(secId);
+    if (!sec) return;
+    var si = sec.querySelectorAll('.check-item, .timeline-check').length;
+    var sd = sec.querySelectorAll('.check-item.done, .timeline-check.done').length;
+    el.textContent = sd+'/'+si;
+    el.style.color = sd===si && si>0 ? 'var(--success)' : 'var(--text-dim)';
+  });
+}
+
+function saveAndUpdate() {
+  // Simple memory state
+  updateProgress();
+}
+
+// ===== PANEL SWITCH =====
+function switchPanel(id, btn) {
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.target-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  setTimeout(updateProgress, 50);
+  // trigger reveals
+  triggerReveals();
+}
+
+// ===== REVEAL ON SCROLL =====
+function triggerReveals() {
+  var reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(function(el) {
+    var rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', triggerReveals);
+setTimeout(triggerReveals, 100);
+
+// ===== TOAST =====
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2000);
+}
+
+// ===== LOCALSTORAGE =====
+var SAVE_KEY = 'ff_guide_v1';
+function saveState() {
+  try {
+    var checks = [];
+    document.querySelectorAll('.check-item').forEach(function(el){ checks.push(el.classList.contains('done')?1:0); });
+    var tl = [];
+    document.querySelectorAll('.timeline-check').forEach(function(el){ tl.push(el.classList.contains('done')?1:0); });
+    var ap = (document.querySelector('.panel.active')||{}).id||'p46';
+    localStorage.setItem(SAVE_KEY, JSON.stringify({checks:checks,tl:tl,panel:ap}));
+  } catch(e){}
+}
+function restoreState() {
+  try {
+    var raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return;
+    var d = JSON.parse(raw);
+    if (d.panel) {
+      var map = {p33:'btn33',p46:'btn46',p50:'btn50'};
+      var b = document.getElementById(map[d.panel]);
+      if (b) { document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');}); document.querySelectorAll('.target-btn').forEach(function(x){x.classList.remove('active');}); document.getElementById(d.panel).classList.add('active'); b.classList.add('active'); }
+    }
+    if (d.checks) { document.querySelectorAll('.check-item').forEach(function(el,i){ if(d.checks[i]) el.classList.add('done'); }); }
+    if (d.tl) {
+      document.querySelectorAll('.timeline-check').forEach(function(el,i){
+        if (d.tl[i]) {
+          el.classList.add('done');
+          var dot = el.closest('.timeline-item').querySelector('.timeline-dot');
+          if (dot) { dot.style.background='#C9A84C'; dot.style.boxShadow='0 0 10px rgba(201,168,76,.4)'; }
+          var yr = el.querySelector('.tl-year');
+          if (yr) yr.textContent = yr.textContent.replace('☐','✓');
+        }
+      });
+    }
+  } catch(e){}
+}
+
+// ===== RESET =====
+function resetAll() {
+  if (!confirm('Reset semua checklist? Semua progress akan dihapus.')) return;
+  document.querySelectorAll('.check-item').forEach(function(el){ el.classList.remove('done'); });
+  document.querySelectorAll('.timeline-check').forEach(function(el){
+    el.classList.remove('done');
+    var dot = el.closest('.timeline-item').querySelector('.timeline-dot');
+    if (dot) { dot.style.background=''; dot.style.boxShadow=''; }
+    var yr = el.querySelector('.tl-year');
+    if (yr) yr.textContent = yr.textContent.replace('✓','☐');
+  });
+  try { localStorage.removeItem(SAVE_KEY); } catch(e){}
+  updateProgress();
+  showToast('↺ Semua checklist direset');
+}
+
+// ===== PRINT =====
+function printPage() { window.print(); }
+
+// ===== PATCH SAVE ON ACTION =====
+var _tog = tog;
+tog = function(el){ _tog(el); saveState(); };
+var _togTL = togTL;
+togTL = function(el){ _togTL(el); saveState(); };
+var _sw = switchPanel;
+switchPanel = function(id,btn){ _sw(id,btn); saveState(); };
+
+// ===== INIT =====
+restoreState();
+updateProgress();
+triggerReveals();
+</script>
+
+<style>
+@media print {
+  body { background: white; color: #1a1a1a; }
+  .progress-global { position: static; background: transparent; border: 1px solid #ddd; }
+  .hero::before { display: none; }
+  .hero { background: #f9f5ec; }
+  .target-btn, .btn { border: 1px solid #ccc; }
+  .check-item { border: 1px solid #ddd; background: white; }
+  .check-item.done { background: #f0faf5; }
+  .stat-box { background: #f5f5f5; border: 1px solid #ddd; }
+  .section-head { border-bottom: 1px solid #ddd; }
+  .toast { display: none; }
+}
+</style>
+</body>
+</html>
